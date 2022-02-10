@@ -55,6 +55,8 @@ public class ProductController {
 		productService.update(productDTO,id);
 		return ResponseEntity.ok("Product updated ");
 	}
+
+	 
 	
 	
 	

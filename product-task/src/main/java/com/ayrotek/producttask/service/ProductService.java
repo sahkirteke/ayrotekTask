@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import com.ayrotek.producttask.model.Product;
 import com.ayrotek.producttask.model.dto.ProductDTO;
 import com.ayrotek.producttask.repository.ProductRepository;
-import com.ayrotek.producttask.repository.UserRepository;
  
 
 @Service
@@ -20,13 +19,11 @@ import com.ayrotek.producttask.repository.UserRepository;
 public class ProductService {
 
 	
-	 ProductRepository productRepository;
-	 UserRepository userRepository;
+	 ProductRepository productRepository; 
 	 TaxService taxService;
 
-	public ProductService(ProductRepository productRepository,UserRepository userRepository, TaxService taxService) { 
-		this.productRepository = productRepository;
-		this.userRepository = userRepository;
+	public ProductService(ProductRepository productRepository, 	 TaxService taxService) { 
+		this.productRepository = productRepository; 
 		this.taxService= taxService;
 	}
 	
@@ -53,7 +50,7 @@ public class ProductService {
 		}
 		
 	}
-	//NEEEDDDDDEEEEEEENNNNN
+	
 	public Product findByProductName(String productName) {
 		Optional<Product> optional =  productRepository.findByProductName(productName);
 		if(optional.isPresent()) {
@@ -69,9 +66,8 @@ public class ProductService {
 		 List<Product> products = productRepository.findAll(); 
 		 taxService.listProduct();
 		 return products;
-	}
-	
-	
+	} 
+	  
 	public void delete(long id) { 
 		productRepository.deleteById(id); 
 		taxService.deleteLog();

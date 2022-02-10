@@ -2,6 +2,7 @@ package com.ayrotek.producttask.service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.stereotype.Service;
@@ -102,6 +103,11 @@ public class TaxService {
 		log.setLogTime(LocalDateTime.now());
 		logRepository.save(log); 
 		
+	}
+
+       public List<Log> listLog() { 
+    	 List<Log>logs= logRepository.findAll();
+    	  return logs; 
 	}
 
 
